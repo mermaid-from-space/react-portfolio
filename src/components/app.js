@@ -9,9 +9,11 @@ import Home from './pages/home';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Blog from './pages/blog';
-import PortfolioDetail from './pages/portfolio/portfolio-detail';
+import PortfolioManager from './pages/portfolio-manager';
+import PortfolioDetail from './portfolio/portfolio-detail';
 import Auth from "./pages/auth";
-import noMatch from "./pages/noMatch";
+import noMatch from "./pages/no-match";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -59,7 +61,7 @@ export default class App extends Component {
         } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
           this.setState({
             loggedInStatus: "LOGGED_IN"
-          })
+          });
         } else if (!loggedIn && loggedInStatus === "LOGGED_IN") {
           this.setState({
             loggedInStatus: "NOT_LOGGED_IN"
@@ -76,8 +78,10 @@ export default class App extends Component {
   }
 
   authorizedPages() {
-    return [<Route path="/blog-me" component={Blog} />];  
-  }
+    return [
+        <Route path="./portfolio-manager" component={PortfolioManager} />
+        ];  
+      }
 
   render() {
     return (
@@ -87,10 +91,10 @@ export default class App extends Component {
           
            <NavigaionContainer 
             loggedInStatus={this.state.loggedInStatus}
-            handleSuccessfullLogout={this.handleSuccessfullLogout} 
+            handleSuccessfullLogout={this.state.handleSuccessfullLogout} 
             />
 
-            <h2>{this.state.loggedInStatus}</h2>
+            
             <Switch>
               <Route exact path="/" component={Home} />
 
@@ -99,7 +103,7 @@ export default class App extends Component {
               render={props => (
                 <Auth 
                   {...props}
-                  handleSuccessfullLogin={this.handlesuccessfullLogin}
+                  handleSuccessfullLogin={this.handleSuccessfullLogin}
                   handleUnsuccessfullLogin={this.handleUnsuccessfullLogin}
                 />
               )}
@@ -107,7 +111,10 @@ export default class App extends Component {
 
               <Route path="/about-me" component={About} />
               <Route path="/contact" component={Contact} />
-              { this.state.loggedInStatus ==="LOGGED_IN" ? this.authorizedPages() :null}
+              <Route path="/blog-me" component={Blog} />
+              {this.state.loggedInStatus ==="LOGGED_IN" ? (
+                this.authorizedPages()
+                ) :null}
               
               <Route 
                 exact 
@@ -118,11 +125,8 @@ export default class App extends Component {
               
             </Switch>
           </div>
-      </Router>
-        
-        
-        
-      </div>
+      </Router> 
+     </div>
     );
   }
 }
