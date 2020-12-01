@@ -32,22 +32,23 @@ export default class Login extends Component {
           }  
         },
         { withCredentials: true }
-        )
+      )
         .then(response => {
           if (response.data.status === 'created') {
-             this.props.handleSuccessfulAuth();
+             this.props.handleSuccessfullAuth();
           } else {
               this.setState({
                   errorText: "Wrong email or password"
               });
-              this.props.handleUnsuccessfulAuth();
+              this.props.handleUnsuccessfullAuth();
           }
         })
-        .catch(error => {
-            this.setState({
-                errorText: "An error occured"
-            })
-        });
+        // .catch(error => {
+        //     this.setState({
+        //         errorText: "An error occured"
+        //     });
+        //     this.props.handleUnsuccessfullAuth();
+        // });
         
     
         event.preventDefault();
