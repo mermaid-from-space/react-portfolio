@@ -9,9 +9,10 @@ export default class PortfolioContainer extends Component {
             pageTitle:"welcome to my portfolio",
             isLoading: false,
             data: [
-              {title: "Capstone Project", category: "blog", slug: 'capstone project' }, 
-              {title: "What's your Spirit Animal?", category: "Scheduling", slug: "what's your spirit animal" }, 
-              {title: "Alien Invasion", category: "eCommerce", slug: 'alien invasion' }
+              {title: "Capstone Project", category: "blog", slug: 'capstone project' },
+              {title: "Practice Website", category: "website", slug: 'practice website' },
+              {title: "What's your Spirit Animal?", category: "Quiz", slug: "what's your spirit animal" } 
+              
               
             ]
         }
