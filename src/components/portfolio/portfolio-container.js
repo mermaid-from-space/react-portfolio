@@ -12,7 +12,8 @@ export default class PortfolioContainer extends Component {
               {title: "Capstone Project", category: "blog", slug: 'capstone project' },
               {title: "Practice Website", category: "website", slug: 'practice website' },
               {title: "What's your Spirit Animal?", category: "Quiz", slug: "what's your spirit animal" },
-              {title: "Flipping Cards", category: "website", slug: "Flip the cards!" } 
+              {title: "Flipping Cards", category: "website", slug: "Flip the cards!" },
+              {title: "HTML CSS tooltips!", category: "website", slug: "Tooltips are cool"}
               
               
             ]
